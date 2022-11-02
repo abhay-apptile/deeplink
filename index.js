@@ -5,7 +5,9 @@ const port = process.env.PORT || 3000;
 app.use(express.static("public"));
 
 app.use("*", (req, res, error) => {
-  res.status(200).json({ message: req.path });
+  var fullUrl = req.protocol + "://" + req.get("host") + req.originalUrl;
+  res.setHeader("Content-Type", "text/html");
+  res.send(`<h1>You are trying to open ${fullUrl}</h1>`);
 });
 
 app.listen(port, () => {
