@@ -7,7 +7,7 @@ app.use(express.static("public"));
 app.use("*", (req, res, error) => {
   var fullUrl = req.protocol + "://" + req.get("host") + req.originalUrl;
   res.setHeader("Content-Type", "text/html");
-  res.send(`<h1>You are trying to open ${fullUrl}</h1>`);
+  res.send(`<h1>You've opened ${fullUrl}</h1>`);
 });
 
 app.listen(port, () => {
